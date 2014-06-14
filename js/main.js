@@ -237,4 +237,28 @@
 
         lastScrollTop = st;
     }
+
+    $('.desktop_nav__links a').click(function(){
+        var desktopLinks = $('.desktop_nav__links a'),
+            spanArrows = $('.desktop_nav__links span'),
+            spanArrow = $(this).prev();
+
+        if($(desktopLinks).hasClass('active')){
+            $(desktopLinks).removeClass('active');
+        }
+
+        if($(spanArrows).hasClass('active')){
+            $(spanArrows).removeClass('active');
+            $(spanArrows).animate({
+                margin: '0 0 0 39px'
+            })
+        }
+
+        $(this).addClass('active');
+        $(spanArrow).addClass('active');
+
+        $(spanArrow).animate({
+            margin: '0 0 0 -12px'
+        })
+    })
 })(jQuery);

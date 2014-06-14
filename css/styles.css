@@ -6,10 +6,17 @@ body {
   background: url("../img/mobile_background.jpg") no-repeat scroll 19% center / cover rgba(0, 0, 0, 0);
   background-attachment: fixed;
 }
-.mobile_logo {
+.logo {
   display: block;
   margin: 0 auto 100px;
   width: 160px;
+}
+@media (min-width: 500px) {
+  .logo {
+    position: fixed;
+    left: 5%;
+    top: 7%;
+  }
 }
 header {
   height: 50px;
@@ -27,6 +34,11 @@ header {
   border-bottom: 1px solid #030202;
   height: 50px;
   width: 100%;
+}
+@media (min-width: 500px) {
+  .mobile_nav {
+    display: none;
+  }
 }
 .mobile_nav .mobile_nav__menu {
   background: url("../img/mobile_menu.png") no-repeat scroll center center / 60% auto rgba(0, 0, 0, 0);
@@ -51,6 +63,50 @@ header {
 .mobile_nav__links a:hover {
   background-color: #3e8a32;
   color: #ffffff;
+}
+.desktop_nav {
+  position: fixed;
+  right: 0;
+}
+@media (max-width: 500px) {
+  .desktop_nav {
+    display: none;
+  }
+}
+.desktop_nav ul li a {
+  background-color: #ffffff;
+  border: 1px solid #e8e8e8;
+  border-bottom: 0;
+  border-right: 0;
+  display: block;
+  color: #030202;
+  font-family: 'Special Elite', trebuchet ms, sans-serif;
+  font-size: 20px;
+  padding: 16px 32px 14px 60px;
+  text-align: right;
+  text-decoration: none;
+  position: relative;
+  z-index: 10;
+}
+.desktop_nav ul li a:hover {
+  background-color: #3e8a32;
+  color: #ffffff;
+}
+.desktop_nav ul li a.active {
+  background-color: #3e8a32;
+  border-left: 0;
+  color: #ffffff;
+}
+.desktop_nav ul li span {
+  content: url('../img/desktop-link-active.png');
+  position: absolute;
+  left: 0;
+  /*margin: 0 0 0 -12px;*/
+  margin: 0 0 0 39px;
+  z-index: 9;
+}
+.desktop_nav ul li:last-child a {
+  border-bottom: 1px solid #e8e8e8;
 }
 .title {
   margin: 70px auto 23px;
@@ -77,6 +133,11 @@ header {
   line-height: 22px;
   margin: 0px 5% 200px;
   padding: 30px 5%;
+}
+@media (min-width: 500px) {
+  .content {
+    margin: 0px 20% 200px;
+  }
 }
 .experience_content__list:last-child {
   margin-bottom: 20px;
