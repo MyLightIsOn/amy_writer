@@ -3,8 +3,12 @@
         menuIcon = $('.mobile_nav__menu'),
         samples = $('.samples_content__list').children('ul'),
         closeSamples = $('.samples_content__close-list'),
+        desktopCloseSamples = $('.desktop-close-list'),
         closeItem = $('.sample_content__sample_close'),
         onlineSamples = $('.online-links__mobile').children('div'),
+        desktopLinks = $('.desktop_nav__links a'),
+        spanArrows = $('.desktop_nav__links span'),
+        divs = $('#wrapper').children('.content');
 
         menuClose = function(){
             $(menuIcon).css({
@@ -43,8 +47,8 @@
         $('.experience_content').scrollView();
         menuClose();
     });
-    $('.other').click(function(){
-        $('.other-skills__content').scrollView();
+    $('.skills').click(function(){
+        $('.skills_content').scrollView();
         menuClose();
     });
     $('.samples').click(function(){
@@ -52,7 +56,7 @@
         menuClose();
     });
     $('.contact').click(function(){
-        $('.contact__content').scrollView();
+        $('.contact_content').scrollView();
         menuClose();
     });
 
@@ -119,7 +123,12 @@
                 $(selector).addClass('active');
                 $(selector).animateAuto("height", 500, function(){
                     var currentHeight = $(selector).height();
-                    $(selector).height(currentHeight + 22);
+
+                    if($(window).width() > 500){
+                        $(selector).height(currentHeight + 150);
+                    } else {
+                        $(selector).height(currentHeight + 70);
+                    }
                 });
                 $('.samples_content__list-name').text("Close " + listName + " list");
                 $(closeSamples).animate({
@@ -130,8 +139,7 @@
 
         //Animates the sample content
         $(sampleLink).on('click', 'a', function(e){
-            var windowPosition  = $(this).position(),
-                openedSample = this,
+            var openedSample = this,
                 listItemIndex =  $(this).parent().index() - 1;
 
             e.preventDefault();
@@ -139,8 +147,9 @@
             $(onlineSamples[listItemIndex]).css({
                opacity: 1
             });
+            $('#desktop_overlay').fadeIn();
             $(sampleContent).css({
-                top: windowPosition.top + 25
+                top: $(this).offset().top + 25
             });
             $(sampleContent).animate({
                 left: '0'
@@ -152,13 +161,15 @@
                 })
             });
 
-            //Close Sample item
+            //Close Mobile Sample item
             $(closeItem).click(function(){
                 $(openedSample).scrollView();
 
+                $('#desktop_overlay').fadeOut();
+
                 //Item slides out of view
                 $(sampleContent).animate({
-                    left: '-1000'
+                    left: '-9000'
                 }, function(){
 
                     //Removes the window positioning
@@ -178,7 +189,7 @@
         });
     });
 
-    //Closes samples list
+    //Closes Mobile samples list
     $(closeSamples).click(function(){
         for(var i = 0; i < samples.length; i++){
             $(samples).removeClass('active');
@@ -191,7 +202,20 @@
         }
     });
 
-    // Hide Header on on scroll down
+    //Closes Desktop samples list
+    $(desktopCloseSamples).click(function(){
+        for(var i = 0; i < samples.length; i++){
+            $(samples).removeClass('active');
+            $(samples).animate({
+                height: '0'
+            });
+            $(closeSamples).animate({
+                height: '0'
+            });
+        }
+    });
+
+    // Hide Mobile Header on on scroll down
     var didScroll;
     var lastScrollTop = 0;
     var delta = 1;
@@ -238,10 +262,73 @@
         lastScrollTop = st;
     }
 
-    $('.desktop_nav__links a').click(function(){
-        var desktopLinks = $('.desktop_nav__links a'),
-            spanArrows = $('.desktop_nav__links span'),
-            spanArrow = $(this).prev();
+    //Desktop Link Animations
+
+    //Desktop Scrolling Animations
+    function getScrollTop(){
+        if(typeof pageYOffset!= 'undefined'){
+            return pageYOffset;
+        }
+        else{
+            var b = document.body; //IE 'quirks'
+            var d = document.documentElement; //IE with doctype
+            d = (d.clientHeight)? d : b;
+            return d.scrollTop;
+        }
+    }
+
+    /*$(divs).each(function(){
+        var thisDiv = this,
+            thisDivClassName = thisDiv.className.replace('_content content',''),
+            thisDivOffsetTop = thisDiv.offsetTop - 200,
+            thisDivOffsetHeight = thisDiv.offsetHeight,
+            thisDivInView = thisDivOffsetTop + thisDivOffsetHeight - 100;
+
+        console.log('Div: ' + thisDivClassName) ;
+        console.log('thisDivOffsetTop: ' + thisDivOffsetTop);
+        console.log('thisDivOffsetHeight: ' + thisDivOffsetHeight);
+        console.log('thisDivInView: ' + thisDivInView);
+        console.log('scrollTop: ' + getScrollTop());
+
+        $(window).on('scroll', function(){
+            console.log(getScrollTop());
+            if((getScrollTop() >= thisDivOffsetTop) && (getScrollTop() <= thisDivInView)){
+
+                $(desktopLinks).each(function(){
+                    if(this.className == thisDivClassName){
+                        if($(this).prev().hasClass('active')){
+                            return false;
+                        }
+
+                        $(this).prev().animate({
+                            margin: '0 0 0 -12px'
+                        })
+                    }
+                });
+
+                $(thisDiv).addClass('active');
+            } else {
+
+                $(desktopLinks).each(function(){
+                    if(this.className == thisDivClassName){
+                        $(this).prev().animate({
+                            margin: '0 0 0 39px'
+                        });
+                    }
+                });
+
+                $(thisDiv).removeClass('active');
+            }
+        });
+    });*/
+
+    //Desktop Click Animations
+    $(desktopLinks).click(function(){
+        var spanArrow = $(this).prev();
+
+        if($(this).hasClass('active')){
+            return false;
+        }
 
         if($(desktopLinks).hasClass('active')){
             $(desktopLinks).removeClass('active');

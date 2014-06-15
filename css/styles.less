@@ -96,9 +96,7 @@ header {
 
             a {
                 background-color: @white;
-                border: 1px solid @light-grey ;
-                border-bottom: 0;
-                border-right: 0;
+                border-top: 1px solid @light-grey ;
                 display: block;
                 color: #030202;
                 font-family: @typefont;
@@ -115,18 +113,20 @@ header {
                 color: @white;
             }
 
+
             a.active {
                 background-color: @geraldine;
-                border-left: 0;
                 color: @white;
             }
 
             span {
-                content: url('../img/desktop-link-active.png');
-                position: absolute;
+                background: url('../img/desktop-link-active.png');
+                display: block;
+                height: 60px;
                 left: 0;
-                /*margin: 0 0 0 -12px;*/
                 margin: 0 0 0 39px;
+                position: absolute;
+                width: 53px;
                 z-index: 9;
             }
         }
@@ -169,7 +169,11 @@ header {
     padding: 30px 5%;
 
     @media (min-width: 500px) {
-        margin: 0px 20% 200px;
+        font-size: 21px;
+        line-height: 37px;
+        margin: 0px 24% 200px;
+        left: -15px;
+        position: relative;
     }
 }
 .experience_content__list:last-child {
@@ -187,16 +191,17 @@ header {
     font-size: 20px;
     font-weight: bold;
 }
-.other-skills__content table{
+.skills_content table{
     width: 100%;
     margin: 0 auto;
 }
 
-.other-skills__content td {
+.skills_content td {
     text-align: center;
     width: 33%;
 }
 .samples_content {
+    background-color: transparent;
     margin-bottom: 200px;
 }
 
@@ -205,6 +210,12 @@ header {
     margin: 0 auto;
     padding: 0;
     width: 95%;
+
+    @media (min-width: 500px) {
+        width: 100%;
+        margin: 0 auto;
+        left: 0;
+    }
 }
 
 .samples_content__list-item {
@@ -250,6 +261,9 @@ header {
     color: grey;
     font-weight: bold;
 }
+.sample_content__container li p {
+    color: @black;
+}
 
 .samples_content__close-list {
     background: url('../img/close-samples.png') no-repeat 98% 10px;
@@ -258,8 +272,13 @@ header {
     color: @white;
     cursor: pointer;
     height: 0;
+    left: 0;
     position: fixed;
     width: 100%;
+
+    @media(min-width: 500px){
+        display: none;
+    }
 }
 .samples_content__close-list span {
     position: relative;
@@ -271,10 +290,28 @@ header {
     display: block;
     padding-right: 99px;
 }
+.desktop-close-list {
+    background: url('../img/close-samples.png') no-repeat 94% 19px;
+    background-color: #838380;
+    cursor: pointer;
+    padding: 17px 60px 17px 18px;
+    font-size: 17px;
+    text-decoration: underline;
+    background-size: 13%;
+    float: right;
+    position: relative;
+    top: 21px;
+    left: -19px;
+
+    @media(max-width: 500px){
+        display: none;
+    }
+}
 .online-links__mobile {
     position: absolute;
     top: 0;
     width: 100%;
+    z-index: 4;
 }
 .online-links__mobile div {
     opacity: 0;
@@ -287,6 +324,11 @@ header {
     position: absolute;
     left: -1000px;
     width: 100%;
+
+    @media(min-width: 500px){
+        margin-left: 25%;
+        width: 50%;
+    }
 }
 
 .samples_content__sample p {
@@ -302,6 +344,7 @@ header {
     opacity: 1 !important;
     position: fixed;
     width: 100%;
+    z-index: 3;
 }
 
 .sample_content__sample_close span{
@@ -311,7 +354,13 @@ header {
     top: 16px;
 }
 
-.contact__content {
+.contact_content {
+
+    @media(min-width: 500px){
+        width: 30%;
+        margin: 0 auto 150px;
+        left: 0;
+    }
 
     span {
         display: block;
@@ -352,3 +401,23 @@ header {
     }
 }
 
+#desktop_overlay {
+    background-color: #000;
+    display: none;
+    opacity:0.5;
+    filter:Alpha(opacity=50);
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    z-index: 2;
+}
+
+#desktop {
+    display: none;
+    visibility: hidden;
+
+    @media (min-width: 500px) {
+        display: block;
+    }
+}

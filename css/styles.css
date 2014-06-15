@@ -75,9 +75,7 @@ header {
 }
 .desktop_nav ul li a {
   background-color: #ffffff;
-  border: 1px solid #e8e8e8;
-  border-bottom: 0;
-  border-right: 0;
+  border-top: 1px solid #e8e8e8;
   display: block;
   color: #030202;
   font-family: 'Special Elite', trebuchet ms, sans-serif;
@@ -94,15 +92,16 @@ header {
 }
 .desktop_nav ul li a.active {
   background-color: #3e8a32;
-  border-left: 0;
   color: #ffffff;
 }
 .desktop_nav ul li span {
-  content: url('../img/desktop-link-active.png');
-  position: absolute;
+  background: url('../img/desktop-link-active.png');
+  display: block;
+  height: 60px;
   left: 0;
-  /*margin: 0 0 0 -12px;*/
   margin: 0 0 0 39px;
+  position: absolute;
+  width: 53px;
   z-index: 9;
 }
 .desktop_nav ul li:last-child a {
@@ -136,7 +135,11 @@ header {
 }
 @media (min-width: 500px) {
   .content {
-    margin: 0px 20% 200px;
+    font-size: 21px;
+    line-height: 37px;
+    margin: 0px 24% 200px;
+    left: -15px;
+    position: relative;
   }
 }
 .experience_content__list:last-child {
@@ -152,15 +155,16 @@ header {
   font-size: 20px;
   font-weight: bold;
 }
-.other-skills__content table {
+.skills_content table {
   width: 100%;
   margin: 0 auto;
 }
-.other-skills__content td {
+.skills_content td {
   text-align: center;
   width: 33%;
 }
 .samples_content {
+  background-color: transparent;
   margin-bottom: 200px;
 }
 .samples_content__list {
@@ -168,6 +172,13 @@ header {
   margin: 0 auto;
   padding: 0;
   width: 95%;
+}
+@media (min-width: 500px) {
+  .samples_content__list {
+    width: 100%;
+    margin: 0 auto;
+    left: 0;
+  }
 }
 .samples_content__list-item {
   background-color: #3e8a32;
@@ -213,6 +224,9 @@ header {
   color: grey;
   font-weight: bold;
 }
+.sample_content__container li p {
+  color: #030202;
+}
 .samples_content__close-list {
   background: url('../img/close-samples.png') no-repeat 98% 10px;
   background-color: #838380;
@@ -220,8 +234,14 @@ header {
   color: #ffffff;
   cursor: pointer;
   height: 0;
+  left: 0;
   position: fixed;
   width: 100%;
+}
+@media (min-width: 500px) {
+  .samples_content__close-list {
+    display: none;
+  }
 }
 .samples_content__close-list span {
   position: relative;
@@ -233,10 +253,29 @@ header {
   display: block;
   padding-right: 99px;
 }
+.desktop-close-list {
+  background: url('../img/close-samples.png') no-repeat 94% 19px;
+  background-color: #838380;
+  cursor: pointer;
+  padding: 17px 60px 17px 18px;
+  font-size: 17px;
+  text-decoration: underline;
+  background-size: 13%;
+  float: right;
+  position: relative;
+  top: 21px;
+  left: -19px;
+}
+@media (max-width: 500px) {
+  .desktop-close-list {
+    display: none;
+  }
+}
 .online-links__mobile {
   position: absolute;
   top: 0;
   width: 100%;
+  z-index: 4;
 }
 .online-links__mobile div {
   opacity: 0;
@@ -248,6 +287,12 @@ header {
   position: absolute;
   left: -1000px;
   width: 100%;
+}
+@media (min-width: 500px) {
+  .samples_content__sample {
+    margin-left: 25%;
+    width: 50%;
+  }
 }
 .samples_content__sample p {
   padding: 20px 20px;
@@ -262,6 +307,7 @@ header {
   opacity: 1 !important;
   position: fixed;
   width: 100%;
+  z-index: 3;
 }
 .sample_content__sample_close span {
   font-size: 20px;
@@ -269,14 +315,21 @@ header {
   position: relative;
   top: 16px;
 }
-.contact__content span {
+@media (min-width: 500px) {
+  .contact_content {
+    width: 30%;
+    margin: 0 auto 150px;
+    left: 0;
+  }
+}
+.contact_content span {
   display: block;
   margin-bottom: 7px;
 }
-.contact__content form {
+.contact_content form {
   margin: 0 auto;
 }
-.contact__content input {
+.contact_content input {
   border: 0;
   background: #e8e8e8;
   height: 48px;
@@ -284,7 +337,7 @@ header {
   margin-bottom: 15px;
   width: 100%;
 }
-.contact__content .message-box {
+.contact_content .message-box {
   background: #e8e8e8;
   border: 0;
   font-size: 23px;
@@ -292,7 +345,7 @@ header {
   margin-bottom: 50px;
   width: 100%;
 }
-.contact__content .submit-button {
+.contact_content .submit-button {
   background-color: #93bd8c;
   cursor: pointer;
   width: 100%;
@@ -300,7 +353,27 @@ header {
   padding: 19px 0;
   font-size: 24px;
 }
-.contact__content .submit-button:hover {
+.contact_content .submit-button:hover {
   background-color: #ffffff;
   color: #3e8a32;
+}
+#desktop_overlay {
+  background-color: #000;
+  display: none;
+  opacity: 0.5;
+  filter: alpha(opacity=50);
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  z-index: 2;
+}
+#desktop {
+  display: none;
+  visibility: hidden;
+}
+@media (min-width: 500px) {
+  #desktop {
+    display: block;
+  }
 }
