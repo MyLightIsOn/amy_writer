@@ -142,12 +142,20 @@ header {
 .title {
     margin: 70px auto 23px;
 
+    @media (min-width: 500px) {
+        margin-bottom: 80px;
+    }
+
     .page_title {
         color: @white;
         font-family: @typefont;
         font-size: 200%;
         margin: 0;
         text-align: center;
+
+        @media (min-width: 500px) {
+            font-size: 50px;
+        }
     }
 }
 
@@ -375,6 +383,10 @@ header {
         height: 48px;
         font-size: 23px;
         margin-bottom: 15px;
+        padding-left: 16px;
+        padding-right: 16px;
+        position: relative;
+        left: -16px;
         width: 100%;
     }
 
@@ -384,6 +396,9 @@ header {
         font-size: 23px;
         height: 200px;
         margin-bottom: 50px;
+        padding:16px 16px 0 16px;
+        position: relative;
+        left: -16px;
         width: 100%;
     }
 
@@ -394,6 +409,12 @@ header {
         text-align: center;
         padding: 19px 0;
         font-size: 24px;
+
+        @media (min-width: 500px) {
+            display: block;
+            margin: 0 auto;
+            width: 50%;
+        }
     }
     .submit-button:hover {
         background-color: @white;
@@ -411,13 +432,4 @@ header {
     height: 100%;
     top: 0;
     z-index: 2;
-}
-
-#desktop {
-    display: none;
-    visibility: hidden;
-
-    @media (min-width: 500px) {
-        display: block;
-    }
 }

@@ -110,12 +110,22 @@ header {
 .title {
   margin: 70px auto 23px;
 }
+@media (min-width: 500px) {
+  .title {
+    margin-bottom: 80px;
+  }
+}
 .title .page_title {
   color: #ffffff;
   font-family: 'Special Elite', trebuchet ms, sans-serif;
   font-size: 200%;
   margin: 0;
   text-align: center;
+}
+@media (min-width: 500px) {
+  .title .page_title {
+    font-size: 50px;
+  }
 }
 .section_title {
   color: #ffffff;
@@ -335,6 +345,10 @@ header {
   height: 48px;
   font-size: 23px;
   margin-bottom: 15px;
+  padding-left: 16px;
+  padding-right: 16px;
+  position: relative;
+  left: -16px;
   width: 100%;
 }
 .contact_content .message-box {
@@ -343,6 +357,9 @@ header {
   font-size: 23px;
   height: 200px;
   margin-bottom: 50px;
+  padding: 16px 16px 0 16px;
+  position: relative;
+  left: -16px;
   width: 100%;
 }
 .contact_content .submit-button {
@@ -352,6 +369,13 @@ header {
   text-align: center;
   padding: 19px 0;
   font-size: 24px;
+}
+@media (min-width: 500px) {
+  .contact_content .submit-button {
+    display: block;
+    margin: 0 auto;
+    width: 50%;
+  }
 }
 .contact_content .submit-button:hover {
   background-color: #ffffff;
@@ -367,13 +391,4 @@ header {
   height: 100%;
   top: 0;
   z-index: 2;
-}
-#desktop {
-  display: none;
-  visibility: hidden;
-}
-@media (min-width: 500px) {
-  #desktop {
-    display: block;
-  }
 }
