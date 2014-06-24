@@ -324,9 +324,6 @@ function onScroll(event){
         var refElement = $(currLink.attr("href"));
         if (refElement.position().top <= scrollPos && refElement.position().top + refElement.height() > scrollPos) {
             $('.desktop_nav__links a').removeClass("active");
-            $(this).prev().animate({
-                margin: '0 0 0 -12px'
-            }, 100);
             currLink.addClass("active");
         }
         else{
